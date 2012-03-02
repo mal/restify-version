@@ -15,13 +15,13 @@ To utilize this module simply `require('restify-version')` and `api.ver()` will 
 Usage is as follows, simply pass a callback function and route to the method, after each callback invocation is complete, the version is restored to it's previous state.
 
     api.ver('1.2.3', function(){
-      app.get('/test/v123', function(req, res){
+      api.get('/test/v123', function(req, res){
         res.send('GET /test/v123');
       });
     });
 
-    app.ver('1.2.4', function(){
-      app.get('/test/v124', function(req, res){
+    api.ver('1.2.4', function(){
+      api.get('/test/v124', function(req, res){
         res.send('GET /test/v124');
       });
     });
@@ -42,7 +42,7 @@ But would issue errors for
     GET /test/v124 HTTP/1.1
     Accept-Version: 1.2.3
 
-You can also access the current version via `app.currentVersion`
+You can also access the current version via `api.currentVersion`
 
 ## Inspiration
 
