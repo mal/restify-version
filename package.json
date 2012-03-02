@@ -1,0 +1,18 @@
+{
+  "name": "restify-version"
+, "author": "Mal Graty <mal.graty@googlemail.com>"
+, "description": "Restify versioned routes extension"
+, "version": "0.0.1"
+, "repository": {
+    "type": "git"
+  , "url": "git://github.com/mal/restify-version.git"
+  }
+, "keywords": ["restify"]
+, "main": "index"
+, "devDependencies": {
+    "restify": "~1"
+  }
+, "engines": {
+    "node": ">= 0.6"
+  }
+}
