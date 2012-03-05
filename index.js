@@ -18,6 +18,21 @@ var restify = require('restify')
   , join = require('path').join
   , Server = restify.Server;
 
+
+/**
+* Coerce `value` to an array, but only if not one already
+*
+* @param {Object} value
+* @return {Array}
+*/
+
+function arrayify(value)
+{
+    if ( value instanceof Array )
+        return value;
+    return [value];
+}
+
 /**
 * Version using the given `version`, providing a callback `fn()`,
 * which will be invoked immediately, resetting the version to the previous.
@@ -27,13 +42,6 @@ var restify = require('restify')
 * @return {Server} for chaining
 * @api public
 */
-
-function arrayify(value)
-{
-    if ( !( value instanceof Array ) )
-        value = [value];
-    return value;
-}
 
 exports.ver = function(version, fn) {
     var prev = this._ver;
