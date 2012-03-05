@@ -10,8 +10,11 @@
 , "keywords": ["restify"]
 , "main": "index"
 , "devDependencies": {
-    "restify": "~1"
+    "request": ">= 2.9.100"
+  , "restify": "~1"
+  , "vows": ">= 0.6.2"
   }
+, "scripts": { "test": "./node_modules/.bin/vows --spec" }
 , "engines": {
     "node": ">= 0.6"
   }
