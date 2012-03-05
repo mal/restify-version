@@ -28,9 +28,16 @@ var restify = require('restify')
 * @api public
 */
 
+function arrayify(value)
+{
+    if ( !( value instanceof Array ) )
+        value = [value];
+    return value;
+}
+
 exports.ver = function(version, fn) {
     var prev = this._ver;
-    this._ver = version;
+    this._ver = arrayify(version);
     fn.call(this);
     this._ver = prev;
     return this;
@@ -59,11 +66,15 @@ exports.__defineGetter__('currentVersion', function() {
     exports[method] = function() {
         var args = Array.prototype.slice.call(arguments)
           , curr = this.currentVersion
-          , path = args.shift();
-        return orig.call(this, {
-            path: path
-          , version: curr
-        }, args);
+          , opts = args.shift();
+        if ( opts instanceof Object )
+            if ( opts.version )
+                opts.version = arrayify(opts.version).concat(curr);
+            else
+                opts.version = curr;
+        else
+            opts = { path: opts, version: curr };
+        return orig.call(this, opts, args);
     };
     return this;
 });
