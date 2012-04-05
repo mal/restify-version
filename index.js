@@ -28,7 +28,7 @@ var restify = require('restify')
 
 function arrayify(value)
 {
-    if ( value instanceof Array )
+    if ( Array.isArray(value) )
         return value;
     return [value];
 }
