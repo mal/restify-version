@@ -66,10 +66,10 @@ exports.__defineGetter__('currentVersion', function() {
 /**
 * Proxy HTTP methods to provide namespacing support.
 * Methods taken from:
-* https://github.com/mcavage/node-restify/blob/33dc3824991ccd151bebdaf0b9039a0f19d7f69a/lib/server.js#L288
+* https://github.com/mcavage/node-restify/blob/a3d8dad77e18d342b9e629f221fc113683902170/lib/server.js#L314
 */
 
-['del', 'get', 'head', 'post', 'put'].forEach(function(method) {
+['del', 'get', 'head', 'post', 'put', 'patch'].forEach(function(method) {
     var orig = Server.prototype[method];
     exports[method] = function() {
         var args = Array.prototype.slice.call(arguments)
