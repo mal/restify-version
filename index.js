@@ -16,7 +16,7 @@
 
 var restify = require('restify')
   , join = require('path').join
-  , Server = restify.Server;
+  , Server = restify.createServer().constructor;
 
 
 /**
